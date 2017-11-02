@@ -39,12 +39,18 @@ gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'haml-rails', '~> 1.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 
+gem 'redcarpet', '~> 3.4'
+gem 'metadown', github: 'steveklabnik/metadown'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+
+  gem 'rspec', '~> 3.7'
+  gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
 end
 
 group :development do
