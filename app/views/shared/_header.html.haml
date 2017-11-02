@@ -1,0 +1,11 @@
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %a.navbar-brand{:href => "#"} Rails Angular Template
+    #navbar.navbar-collapse.collapse
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to 'Home', root_path
+        %li
+          = link_to 'Articles', articles_path
+    / /.nav-collapse
