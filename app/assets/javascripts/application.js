@@ -11,8 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require rails-ujs
+//= require foundation
 //= require turbolinks
 //= require angular
 //= require app
+
+$(function(){ $(document).foundation(); });

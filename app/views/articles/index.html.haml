@@ -1,23 +1,39 @@
-%h1 Listing articles
+%hr
+%form
+  .row
+    .small-10.medium-5.columns
+      %input{:placeholder => "Title", :type => "text", 'ng-model' => "article.title"}
+    .small-10.medium-5.columns
+      %textarea{:placeholder => "Body start here!", 'ng-model' => "article.body"}
+    .small-10.medium-2.columns.align-middle
+      %input{:type => "submit", "ng-click" => "addArticle(article)", "class" => "button"}
 
-%table{class: 'table table-striped'}
+%hr
+%h4 Listing articles
+%table{class: 'table'}
   %thead
     %tr
       %th Title
       %th Body
-      %th
-      %th
-      %th
+      %th Action
 
   %tbody
-    - @articles.each do |article|
-      %tr
-        %td= article.title
-        %td= article.body
-        %td= link_to 'Show', article
-        %td= link_to 'Edit', edit_article_path(article)
-        %td= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
+    %tr{"ng-repeat" => "article in articles"}
+      %td {{ article.title }}
+      %td {{ article.body }}
+      %td
+        %a{"ng-href" => "{{article.url}}" }
+          = fa_icon "camera-retro"
 
-= link_to 'New Article', new_article_path
+    -# - @articles.each do |article|
+    -#   %tr
+    -#     %td= article.title
+    -#     %td= article.body
+    -#     %td
+    -#       = link_to article do
+    -#         = fa_icon "camera-retro"
+    -#       = link_to edit_article_path(article) do
+    -#         = fa_icon "edit"
+    -#       = link_to article, method: :delete , data: { confirm: 'Are you sure?'} do
+    -#         = fa_icon "trash"

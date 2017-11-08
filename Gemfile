@@ -37,7 +37,9 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'angularjs-rails', '~> 1.6', '>= 1.6.2'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'haml-rails', '~> 1.0'
-gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+
+gem 'font-awesome-rails', '~> 4.7'
+gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
 
 gem 'redcarpet', '~> 3.4'
 gem 'metadown', github: 'steveklabnik/metadown'
@@ -51,6 +53,7 @@ group :development, :test do
 
   gem 'rspec', '~> 3.7'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
+  gem 'faker', '~> 1.8', '>= 1.8.4'
 end
 
 group :development do

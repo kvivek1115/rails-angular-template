@@ -1,27 +1,26 @@
 angular.module('flapperNews', [])
-.controller('MainCtrl', [
-'$scope',
-function($scope){
-  $scope.test = 'Hello world!';
-  $scope.posts = [
-	  {title: 'post 1', upvotes: 5},
-	  {title: 'post 2', upvotes: 2},
-	  {title: 'post 3', upvotes: 15},
-	  {title: 'post 4', upvotes: 9},
-	  {title: 'post 5', upvotes: 4}
-  ];
-  $scope.addPost = function(){
-  	if(!$scope.title || $scope.title === '') { return; }
-  	$scope.posts.push({
-  		title: $scope.title,
-  		link: $scope.link,
-  		upvotes: 0 
-  	});
-    $scope.title = '';
-    $scope.link = '';
+.controller('MainCtrl', ['$scope', 'myFactory', function($scope, myFactory){
+  $scope.articles = {};
+  $scope.article = {};
+
+  myFactory.getArticles().then(function (response) {
+        $scope.articles = response;
+  });
+  $scope.addArticle = function(article){
+  	if(!article) { return; }
+    $scope.article = {};
   };
-  $scope.incrementUpvotes = function(post) {
-    post.upvotes += 1;
-  };
+}])
+.factory('myFactory', ['$http', function ($http) {
+  var service = {}
+  service.getArticles = function () {
+    return $http.get('/articles.json').then(function(response) {
+      return response.data;
+    });
+  }
+  service.setArticle = function (article) {
+    return $http.post('/article', article);
+  }
+  return service;
 }]);
 
