@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -33,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
-
+gem 'angular_rails_csrf', '~> 2.1', '>= 2.1.1'
 gem 'angularjs-rails', '~> 1.6', '>= 1.6.2'
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'haml-rails', '~> 1.0'
@@ -41,19 +40,21 @@ gem 'haml-rails', '~> 1.0'
 gem 'font-awesome-rails', '~> 4.7'
 gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
 
-gem 'redcarpet', '~> 3.4'
 gem 'metadown', github: 'steveklabnik/metadown'
+gem 'redcarpet', '~> 3.4'
+
 
 group :development, :test do
+  gem 'brakeman', '~> 4.0', '>= 4.0.1', require: false
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
-
+  gem 'faker', '~> 1.8', '>= 1.8.4'
   gem 'rspec', '~> 3.7'
   gem 'rspec-rails', '~> 3.7', '>= 3.7.1'
-  gem 'faker', '~> 1.8', '>= 1.8.4'
+  gem 'rubocop', '~> 0.51.0'
+  gem 'selenium-webdriver'
 end
 
 group :development do

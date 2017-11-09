@@ -1,12 +1,14 @@
 %hr
-%form
+%form{:name => "form", :novalidate => ""}
   .row
     .small-10.medium-5.columns
-      %input{:placeholder => "Title", :type => "text", 'ng-model' => "article.title"}
+      %input{:placeholder => "Title", name: :title, :type => "text", 'ng-model' => "article.title", required: ""}
+      %div{'ng-show' => "form.$submitted || form.title.$touched"}
+        %div{'ng-show' => "form.title.$error.required"} Title is required.
     .small-10.medium-5.columns
       %textarea{:placeholder => "Body start here!", 'ng-model' => "article.body"}
     .small-10.medium-2.columns.align-middle
-      %input{:type => "submit", "ng-click" => "addArticle(article)", "class" => "button"}
+      %input{:type => "submit", "ng-click" => "(article.id) ? updateArticle(article) : addArticle(article)", "class" => "button"}
 
 %hr
 %h4 Listing articles
@@ -20,20 +22,12 @@
   %tbody
 
     %tr{"ng-repeat" => "article in articles"}
-      %td {{ article.title }}
-      %td {{ article.body }}
+      %td 
+        %p {{ article.title }}
+      %td 
+        %p {{ article.body }}
       %td
-        %a{"ng-href" => "{{article.url}}" }
-          = fa_icon "camera-retro"
-
-    -# - @articles.each do |article|
-    -#   %tr
-    -#     %td= article.title
-    -#     %td= article.body
-    -#     %td
-    -#       = link_to article do
-    -#         = fa_icon "camera-retro"
-    -#       = link_to edit_article_path(article) do
-    -#         = fa_icon "edit"
-    -#       = link_to article, method: :delete , data: { confirm: 'Are you sure?'} do
-    -#         = fa_icon "trash"
+        %a{"ng-click" => "editArticle(article)"}
+          = fa_icon "edit"
+        %a{"ng-click" => "deleteArticle(article)"}
+          = fa_icon "trash"
