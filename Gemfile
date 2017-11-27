@@ -43,7 +43,7 @@ gem 'foundation-rails', '~> 6.4', '>= 6.4.1.2'
 gem 'metadown', github: 'steveklabnik/metadown'
 gem 'redcarpet', '~> 3.4'
 
-
+gem 'skylight'
 group :development, :test do
   gem 'brakeman', '~> 4.0', '>= 4.0.1', require: false
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
