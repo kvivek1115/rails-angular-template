@@ -5,6 +5,6 @@ class AuthenticatedRoot
   end
 
   def current_user(request)
-    User.find_by_id(request.session[:user_id]) if request.session[:user_id].present?
+    User.find_by_id(request.session[:user_id]) if request.session && request.session[:user_id].present?
   end
 end
