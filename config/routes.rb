@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :articles do
     resources :comments
   end
-  root 'home#index'
 
+  root 'markdown#index', constraints: AuthenticatedRoot.new
+  root 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
